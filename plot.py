@@ -173,9 +173,10 @@ class Application(QtWidgets.QMainWindow):
             if float(self.textfield2.text()) > float(self.textfield3.text()):
                 self.error_mess("Minimum value must be smaller than maximum value")
                 return
-            # replace ^ with ** for power 
+            # replace ^ with ** for power and replace any X by x
             eq = self.textfield1.text()
             eq = eq.replace('^', '**')
+            eq = eq.replace('X', 'x')
 
             minval = float(self.textfield2.text())
             maxval = float(self.textfield3.text())
@@ -189,12 +190,12 @@ class Application(QtWidgets.QMainWindow):
             self.axes.set_title("Plotter")
             self.axes.set_xlabel(r'$x$')
             self.axes.set_ylabel(r'$f(x)$')
-            # self.axes.grid()
+            self.axes.grid()
             try: 
                 self.axes.plot(step, eval(eq, {'x': step}))
+                self.canvas.draw()
             except:
-                self.axes.plot(step, eval(eq, {'X': step}))
-            self.canvas.draw()
+                self.error_mess("Invalid equation")
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
