@@ -2,7 +2,7 @@ import sys
 import numpy as np
 
 from PySide2 import QtWidgets
-from PySide2.QtGui import QFont, QBrush, QPixmap
+from PySide2.QtGui import QFont, QBrush, QPixmap, QIcon
 
 from matplotlib.backends.backend_qt5agg import (FigureCanvas)
 from matplotlib.figure import Figure
@@ -17,11 +17,16 @@ class Application(QtWidgets.QMainWindow):
         self.setCentralWidget(self._main)
         self.layout = QtWidgets.QGridLayout(self._main)
 
+        # --- Backhround image ---
         self.setAutoFillBackground(True)
         p = self.palette()
         brush = QBrush(QPixmap("imgs/background.jpg"))
         p.setBrush(self.backgroundRole(), brush)
         self.setPalette(p)
+
+        # --- Application icon ---
+        app_icon = QIcon("imgs/icon.png")
+        self.setWindowIcon(app_icon)
 
         # ---- Labels and Textfields ---- 
         #       Equation label 
@@ -83,23 +88,16 @@ class Application(QtWidgets.QMainWindow):
     # Setting up the window ui
     def setup_ui(self):
         self.setup_main_window()
-        self.setup_menu_bar()
 
     def setup_main_window(self):
         self.main_widget = QtWidgets.QWidget(self)
         self.main_layout = QtWidgets.QVBoxLayout(self.main_widget)
         self.setCentralWidget(self.main_widget)
 
-    def setup_menu_bar(self):
-        self.menu_bar = self.menuBar()
-        self.file_menu = self.menu_bar.addMenu("File")
-        self.edit_menu = self.menu_bar.addMenu("Edit")
-        self.view_menu = self.menu_bar.addMenu("View")
-        self.help_menu = self.menu_bar.addMenu("Help")
-
     # Error messaage window
     def error_mess(self, mess):
         self.mbox = QtWidgets.QMessageBox()
+        self.mbox.setWindowIcon(QIcon("imgs/error.png"))
         self.mbox.setText(mess)
         self.mbox.setStyleSheet("color: rgb(220,20,60)")
         self.mbox.setWindowTitle("Error")
