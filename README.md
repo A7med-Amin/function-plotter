@@ -25,5 +25,5 @@ python plot.py
 ```
 - To run automated tests execute the following command in your terminal
 ```bash
-pytest test_app.py
+pytest test.py
 ```
