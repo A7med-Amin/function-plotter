@@ -1,6 +1,6 @@
 # function-plotter
 
-![image](https://github.com/A7med-Amin/function-plotter/assets/80707696/70bd3077-09da-4d6b-bce6-95280f99f802)
+![image](https://github.com/A7med-Amin/function-plotter/assets/80707696/134258d8-d36c-463f-8943-18059bacfe55)
 
 ## Application introduction
 Mathematical functions plotter python application implemented using following libraries numpy, pyside2 and matplotlib. pytest and pytest-qt are also used for testing. The application has 3 inputs the function equation and the max and min values, then if the function and its range both are valid the plot of the equation will appear if not an error message will appaer.
